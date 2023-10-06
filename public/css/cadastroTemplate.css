@@ -1,23 +1,25 @@
+@import url('_main.css');
+
+/* Refactor the body */
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #258A42;
+    font-family: var(--font-family);
     overflow-y: hidden;
 }
 
 .navbar {
     margin-top: 70.4px;
     height: 100%;
-    background-color: #ebeae4;
+    background-color: var(--secondary-color);
     position: fixed;
     top: 0;
     left: 0;
     overflow-x: hidden;
-    transition: width 1.0s ease;
+    transition: width 10s ease;
     display: flex;
-    padding-left: 10px;
+    justify-content: space-between;
     flex-direction: column;
+    padding-left: 10px;
     z-index: 2;
 }
 
@@ -25,6 +27,11 @@ body {
     font-size: 30px;
     margin-top: 30px;
     margin-right: 10px;
+}
+
+.navbar i:first-child {
+    cursor: pointer;
+    margin-left: auto;
 }
 
 .navbar-expanded {
@@ -48,11 +55,14 @@ body {
     font-size: 15px;
     padding: 10px 20px;
     margin-right: 10px;
+    align-self: stretch;
+
+    transition: color .4s ease;
 }
 
 .navbar a:hover {
     background-color: #0056b3;
-    color: black;
+    color: whitesmoke;
 }
 
 .hidden {
@@ -82,19 +92,54 @@ body {
 }
 
 .container {
-    width: 80%;
-    max-width: 600px;
+    width: clamp(90vw, 80%, 600px);
     min-height: 75vh;
-    min-width: 90vw;
-    padding: 20px;
+    padding: 64px 32px;
     margin-left: 70px;
     margin-top: 30px;
     background-color: #fff;
-    border-radius: 15px;
+    border-radius: .8vmin;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    position: relative;
-    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container form {
+    margin-top: 8vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 70%;
+}
+
+.container form label {
+    align-self: self-start;
+    font-weight: 600;
+}
+
+.container form button {
+    width: 25%;
+    padding: 16px 32px;
+    border-radius: 100vmax;
+}
+
+.container form:invalid button {
+    opacity: 60%;
+    pointer-events: none;
+}
+
+.container form:valid button {
+    opacity: 100%;
+    pointer-events: all;
+}
+
+.container form input {
+    width: 100%;
+    padding: 16px 32px;
+    font-size: 1.05rem;
 }
 
 .container h1 {
@@ -188,4 +233,9 @@ body {
     height: auto;
     padding: 10px;
     background-color: #f2f2f2;
+}
+
+.fa-copyright {
+    margin-bottom: 10vmin;
+    align-self: center;
 }
